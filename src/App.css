@@ -1,0 +1,21 @@
+.Contenedor {
+  margin: auto;
+  width: 80%;
+  min-height: 100dvh;
+  height: auto;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 300px auto 100px;
+  grid-template-areas:
+    "navbar"
+    "header"
+    "main"
+    "footer";
+}
+
+@media (max-width: 486px) {
+  .Contenedor {
+    width: 100%;
+  }
+}

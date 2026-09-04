@@ -1,0 +1,51 @@
+.navbar {
+  width: 100%;
+  grid-area: navbar;
+  background-color: #333;
+
+  .menu-nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+
+    .div-p1 {
+      width: 70%;
+      letter-spacing: 0.8px;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 4px;
+
+      .p-1 {
+        color: white;
+        font-size: 14px;
+      }
+    }
+
+    a {
+      font-size: 12px;
+      color: white;
+      border: 1px solid white;
+      border-radius: 4px;
+      padding: 5px;
+    }
+    .div-total {
+      width: 30%;
+      display: flex;
+      justify-content: flex-end;
+
+      .p-2 {
+        font-size: 14px;
+        width: 130px;
+        color: aqua;
+        border: 1px solid aqua;
+        border-radius: 4px;
+        padding: 5px;
+      }
+    }
+  }
+}
