@@ -4,6 +4,8 @@ import "./../assets/css/Navbar.css";
 
 import { useTotalContext } from "../context/TotalContext";
 import Boton from "./Boton";
+import { Link } from "react-router-dom";
+import Register from "../pages/RegisterPage";
 
 function Navbar(props) {
   // contexto
@@ -20,6 +22,9 @@ function Navbar(props) {
   const handlerLogout = () => {
     setToken(false);
   };
+  const handlerRegister = () => {
+    console.log(`Btn Register`);
+  };
 
   return (
     <div className="navbar">
@@ -29,22 +34,22 @@ function Navbar(props) {
           {token == true ? (
             <>
               <Boton texto="Home" clase="nav">
-                Home <i class="fa-solid fa-house"></i>
+                Home <i className="fa-solid fa-house"></i>
               </Boton>
               <Boton texto="Profile" clase="nav">
                 Profile <i class="fa-solid fa-user-gear"></i>
               </Boton>
               <Boton texto="Logout" clase="nav" onClick={handlerLogout}>
-                Logout <i class="fa-solid fa-right-from-bracket"></i>
+                Logout <i className="fa-solid fa-right-from-bracket"></i>
               </Boton>
             </>
           ) : (
             <>
               <Boton texto="Login" clase="nav" onClick={handlerLogin}>
-                Login <i class="fa-regular fa-user"></i>
+                Login <i className="fa-regular fa-user"></i>
               </Boton>
-              <Boton texto="Registrar" clase="nav">
-                Register <i class="fa-solid fa-check-double"></i>
+              <Boton texto="Registrar" clase="nav" onClick={handlerRegister}>
+                Register <i className="fa-solid fa-check-double"></i>
               </Boton>
             </>
           )}
@@ -53,7 +58,7 @@ function Navbar(props) {
         <div className="div-total">
           <p className="p-2">
             Total: <span>${(total + totalReal).toLocaleString()} </span>
-            <i class="fa-solid fa-cart-shopping"></i>
+            <i className="fa-solid fa-cart-shopping"></i>
           </p>
         </div>
       </menu>

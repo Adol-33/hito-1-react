@@ -25,7 +25,7 @@ function CardPizza(props) {
         </p>
         <hr />
         <p className="ingrediente">
-          <i class="fa-solid fa-pizza-slice"></i>
+          <i className="fa-solid fa-pizza-slice"></i>
           Ingredientes:
           <br />
           <span>{ingredientes}</span>

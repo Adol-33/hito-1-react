@@ -14,7 +14,7 @@
     "footer";
 }
 
-@media (max-width: 486px) {
+@media (max-width: 500px) {
   .Contenedor {
     width: 100%;
   }
