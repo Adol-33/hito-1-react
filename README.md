@@ -4,7 +4,7 @@ En este hito empezamos a usar react neative, este desafio se enfoca solo en Fron
 
 ## Link a la pizzeria
 
-[Pizzeria Mamma Mia]("https://adol-33.github.io/hito-1-react/")
+[Pizzeria Mamma Mia](https://adol-33.github.io/hito-1-react/)
 
 ## Estructura de carpetas
 
