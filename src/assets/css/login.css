@@ -1,0 +1,47 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 60%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 4px;
+  /* border: 0.5px solid lightgray; */
+
+  /* h1 {
+    align-self: flex-start;
+  } */
+  .div-img {
+    font-size: 55px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    input,
+    button {
+      width: 100%;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      outline: 2px solid lightblue;
+    }
+
+    button {
+      font-weight: bold;
+      cursor: pointer;
+      color: darkgreen;
+      background-color: lightgreen;
+    }
+
+    button:hover {
+      background-color: rgb(2, 200, 2);
+    }
+  }
+}

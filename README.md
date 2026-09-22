@@ -23,14 +23,15 @@ En este hito empezamos a usar react neative, este desafio se enfoca solo en Fron
 
 Tienes que crear un proyecto de React con Vite usando `npm create vite@latest`
 Para el despliegue en github pages se instala gh-pages `npm i gh-pages`
-Se configura el archivo "/vite.config.js" agregando `base: "/hito-1-react/",`
-Se contruye el build con `npm run build`
+Se configura el archivo "/vite.config.js" agregando el nombre del repositorio `base: "/hito-1-react/",`
 Se agrega al archivo "/package.json"
 
 - Scripts:
   - `"hompage": "https://adol-33.github.io/hito-1-react/"`
   - `"predeploy": "npm run build"`
   - `"deploy": "gh-pages -d dist"`
+
+Se contruye el build con `npm run build`
 
 ## Uso
 

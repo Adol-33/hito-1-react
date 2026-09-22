@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./../assets/css/Navbar.css";
 
-import { useTotalContext } from "../context/TotalContext";
+import { useTotalContext } from "../context/Total.Context";
 import Boton from "./Boton";
 import { Link } from "react-router-dom";
 import Register from "../pages/RegisterPage";
@@ -37,7 +37,7 @@ function Navbar(props) {
                 Home <i className="fa-solid fa-house"></i>
               </Boton>
               <Boton texto="Profile" clase="nav">
-                Profile <i class="fa-solid fa-user-gear"></i>
+                Profile <i className="fa-solid fa-user-gear"></i>
               </Boton>
               <Boton texto="Logout" clase="nav" onClick={handlerLogout}>
                 Logout <i className="fa-solid fa-right-from-bracket"></i>

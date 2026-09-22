@@ -1,7 +1,7 @@
 import React from "react";
 
 import Boton from "./Boton";
-import { useTotalContext } from "../context/TotalContext";
+import { useTotalContext } from "../context/Total.Context";
 import "./../assets/css/CardPizza.css";
 
 function CardPizza(props) {
