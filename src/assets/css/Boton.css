@@ -5,6 +5,7 @@
   cursor: pointer;
   outline: 2px solid lightblue;
   font-size: 10px;
+  background-color: none;
 }
 
 .btn:hover {
@@ -34,4 +35,25 @@
   outline: 1px solid yellow;
   background-color: rgb(93, 93, 5);
   /* transform: scale(1.02); */
+}
+
+/* Clases para los botones del Carrito */
+.red {
+  color: lightcoral;
+  outline: 2px solid lightcoral;
+  font-weight: bold;
+}
+
+.blue {
+  font-weight: bold;
+  color: lightblue;
+  outline: 2px solid lightblue;
+}
+
+.black {
+  font-weight: bold;
+  color: #f1f1f1;
+  background-color: #090909;
+  outline: none;
+  padding: 10px 15px;
 }

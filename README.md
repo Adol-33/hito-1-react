@@ -33,9 +33,16 @@ Se agrega al archivo "/package.json"
 
 Se contruye el build con `npm run build`
 
+Para desplegar el proyecto en GitHub Pages:
+
+- `npm run deploy`
+  Este comando se escibe en la terminal para que despliegue el proyecto en GitHub Pages.
+
 ## Uso
 
 Esta es una pagina para un Pizzeria donde se visualizan las Pizzas, precio y ingredientes, se pueden agregar pizzas al carrito, lo que da un total al pagar.
+
+## Desplegar en GitHub Pages
 
 ## Licencia
 

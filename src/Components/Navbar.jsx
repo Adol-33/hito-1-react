@@ -45,6 +45,9 @@ function Navbar(props) {
             </>
           ) : (
             <>
+              <Boton texto="Home" clase="nav">
+                Home <i className="fa-solid fa-house"></i>
+              </Boton>
               <Boton texto="Login" clase="nav" onClick={handlerLogin}>
                 Login <i className="fa-regular fa-user"></i>
               </Boton>

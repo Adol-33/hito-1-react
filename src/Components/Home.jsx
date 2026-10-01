@@ -1,35 +1,35 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import "./../assets/css/Home.css";
 
 import Header from "./Header";
 import CardPizza from "./CardPizza";
+import { pizzas } from "./../../public/material_de_apoyo/pizzas";
+import { Link } from "react-router-dom";
 
 // Componente
 function Home() {
+  console.log(pizzas);
+
   // Renderizado
   return (
     <>
       <Header></Header>
       <div className="main">
-        <CardPizza
-          img="https://www.hola.com/horizon/landscape/85bed2f17abc-adobestock444867086.jpg?im=Resize=(640),type=downsize"
-          name="Napolitana"
-          price={15000}
-          ingredients={["Queso", "Jamon"]}
-        />
-        <CardPizza
-          img="https://tse4.mm.bing.net/th/id/OIP.h-0eDHHVyQ7f5x1TIzNXJgHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-          name="Romana"
-          price={25000}
-          ingredients={["Chicharron", "Churrasco", "Cebolla", "Tomate"]}
-        />
-        <CardPizza
-          img="https://www.hola.com/horizon/landscape/a17cd68660e0-pizza-hawaiana-t.jpg"
-          name="Hawaiana"
-          price={35000}
-          ingredients={["Salsa", "Piña"]}
-        />
+        <ul>
+          {pizzas.map((p) => {
+            return (
+              <CardPizza
+                key={p.id}
+                img={p.img}
+                name={p.name}
+                price={p.price}
+                ingredients={p.ingredients}
+                desc={p.desc}
+              />
+            );
+          })}
+        </ul>
       </div>
     </>
   );

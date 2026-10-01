@@ -1,5 +1,4 @@
-import React from "react";
-
+//
 import Boton from "./Boton";
 import { useTotalContext } from "../context/Total.Context";
 import "./../assets/css/CardPizza.css";
@@ -7,8 +6,10 @@ import "./../assets/css/CardPizza.css";
 function CardPizza(props) {
   // Contexto total
   const { totalReal, setTotal } = useTotalContext();
-  const ingredientes = props.ingredients.join(", ");
+  // Lista de ingredientes
+  const ingredientes = "";
 
+  // Agregar el valor al carrito
   const handlerAgregarPizza = () => {
     console.log(`Precio: ${props.price}`);
     setTotal(totalReal + props.price);
@@ -21,15 +22,18 @@ function CardPizza(props) {
       </div>
       <div className="div-2">
         <p>
-          <b>Pizza {props.name}</b>
+          <b>pizza {props.name}</b>
         </p>
         <hr />
-        <p className="ingrediente">
+        <div className="ingrediente">
           <i className="fa-solid fa-pizza-slice"></i>
-          Ingredientes:
-          <br />
-          <span>{ingredientes}</span>
-        </p>
+          <p>Ingredientes:</p>
+          <ul>
+            {props.ingredients.map((ingrediente, index) => (
+              <li key={index}>{ingrediente}</li>
+            ))}
+          </ul>
+        </div>
         <hr />
         <div className="precio">
           <p>
@@ -37,8 +41,8 @@ function CardPizza(props) {
           </p>
           <span>${props.price.toLocaleString()}</span>
           <div className="precio-btn">
-            <Boton texto="Ver Más"></Boton>
-            <Boton texto="Añadir" clase="negro" onClick={handlerAgregarPizza}>
+            <Boton>Ver Más</Boton>
+            <Boton clase="negro" onClick={handlerAgregarPizza}>
               Añadir <i className="fa-solid fa-cart-arrow-down"></i>
             </Boton>
           </div>
