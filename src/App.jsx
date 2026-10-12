@@ -10,16 +10,18 @@ import { Route, Routes } from "react-router-dom";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import Cart from "./Components/Cart";
+import Pizza from "./pages/Pizza";
 
 function App() {
   return (
     <div className="Contenedor">
       <TotalContextProvider>
-        <Cart />
         <Navbar />
         {/* <Home /> */}
+        {/* <Cart /> */}
         {/* <RegisterPage />
         <LoginPage /> */}
+        <Pizza />
         <Footer />
       </TotalContextProvider>
     </div>
