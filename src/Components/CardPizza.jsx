@@ -2,8 +2,10 @@
 import Boton from "./Boton";
 import { useTotalContext } from "../context/Total.Context";
 import "./../assets/css/CardPizza.css";
+import { useNavigate } from "react-router-dom";
 
 function CardPizza(props) {
+  let navegar = useNavigate();
   // Contexto total
   const { totalReal, setTotal } = useTotalContext();
   // Lista de ingredientes
@@ -41,7 +43,13 @@ function CardPizza(props) {
           </p>
           <span>${props.price.toLocaleString()}</span>
           <div className="precio-btn">
-            <Boton>Ver Más</Boton>
+            <Boton
+              onClick={() => {
+                navegar(`/hito-1-react/pizza/${props.id}`);
+              }}
+            >
+              Ver Más
+            </Boton>
             <Boton clase="negro" onClick={handlerAgregarPizza}>
               Añadir <i className="fa-solid fa-cart-arrow-down"></i>
             </Boton>

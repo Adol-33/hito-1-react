@@ -3,11 +3,10 @@ import React, { useEffect, useState } from "react";
 import "./../assets/css/Navbar.css";
 
 import { useTotalContext } from "../context/Total.Context";
-import Boton from "./Boton";
-import { Link } from "react-router-dom";
-import Register from "../pages/RegisterPage";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar(props) {
+  let navegar = useNavigate();
   // contexto
   const { totalReal } = useTotalContext();
 
@@ -16,14 +15,18 @@ function Navbar(props) {
   const [token, setToken] = useState(false);
 
   // Handlers
-  const handlerLogin = () => {
-    setToken(true);
+  const handleLogin = () => {
+    navegar("/hito-1-react/login");
   };
-  const handlerLogout = () => {
+  const handleLogout = () => {
     setToken(false);
   };
-  const handlerRegister = () => {
+  const handleRegister = () => {
     console.log(`Btn Register`);
+    navegar("/hito-1-react/register");
+  };
+  const handleHome = () => {
+    navegar("/hito-1-react/");
   };
 
   return (
@@ -33,36 +36,36 @@ function Navbar(props) {
           <p className="p-1">Pizzeria Mamma Mia</p>
           {token == true ? (
             <>
-              <Boton texto="Home" clase="nav">
+              <Link to="/hito-1-react" clase="nav">
                 Home <i className="fa-solid fa-house"></i>
-              </Boton>
-              <Boton texto="Profile" clase="nav">
+              </Link>
+              <Link to="/hito-1-react/profile" clase="nav">
                 Profile <i className="fa-solid fa-user-gear"></i>
-              </Boton>
-              <Boton texto="Logout" clase="nav" onClick={handlerLogout}>
+              </Link>
+              <Link to="/hito-1-react/logout" clase="nav">
                 Logout <i className="fa-solid fa-right-from-bracket"></i>
-              </Boton>
+              </Link>
             </>
           ) : (
             <>
-              <Boton texto="Home" clase="nav">
+              <Link to="/hito-1-react" clase="nav">
                 Home <i className="fa-solid fa-house"></i>
-              </Boton>
-              <Boton texto="Login" clase="nav" onClick={handlerLogin}>
+              </Link>
+              <Link to="/hito-1-react/login" clase="nav">
                 Login <i className="fa-regular fa-user"></i>
-              </Boton>
-              <Boton texto="Registrar" clase="nav" onClick={handlerRegister}>
+              </Link>
+              <Link to="/hito-1-react/register" clase="nav">
                 Register <i className="fa-solid fa-check-double"></i>
-              </Boton>
+              </Link>
             </>
           )}
         </div>
 
         <div className="div-total">
-          <p className="p-2">
+          <Link to="/hito-1-react/cart" className="p-2">
             Total: <span>${(total + totalReal).toLocaleString()} </span>
             <i className="fa-solid fa-cart-shopping"></i>
-          </p>
+          </Link>
         </div>
       </menu>
     </div>

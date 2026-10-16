@@ -5,7 +5,6 @@ import "./../assets/css/Home.css";
 import Header from "./Header";
 import CardPizza from "./CardPizza";
 // import { pizzas } from "./../../public/material_de_apoyo/pizzas";
-import { Link } from "react-router-dom";
 
 // Componente
 function Home() {
@@ -49,6 +48,7 @@ function Home() {
             return (
               <CardPizza
                 key={p.id}
+                id={p.id}
                 img={p.img}
                 name={p.name}
                 price={p.price}
