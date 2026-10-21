@@ -21,7 +21,6 @@ function Home() {
 
         const data = await respuesta.json();
         setPizzas(data);
-        console.log(data);
 
         // Retorno
         return data;

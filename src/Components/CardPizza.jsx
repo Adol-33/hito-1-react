@@ -1,21 +1,14 @@
 //
 import Boton from "./Boton";
-import { useTotalContext } from "../context/Total.Context";
 import "./../assets/css/CardPizza.css";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 function CardPizza(props) {
   let navegar = useNavigate();
-  // Contexto total
-  const { totalReal, setTotal } = useTotalContext();
-  // Lista de ingredientes
-  const ingredientes = "";
 
-  // Agregar el valor al carrito
-  const handlerAgregarPizza = () => {
-    console.log(`Precio: ${props.price}`);
-    setTotal(totalReal + props.price);
-  };
+  const { AgregarPizza } = useContext(CartContext);
 
   return (
     <div className="card">
@@ -50,7 +43,7 @@ function CardPizza(props) {
             >
               Ver Más
             </Boton>
-            <Boton clase="negro" onClick={handlerAgregarPizza}>
+            <Boton clase="negro" onClick={() => AgregarPizza(props)}>
               Añadir <i className="fa-solid fa-cart-arrow-down"></i>
             </Boton>
           </div>

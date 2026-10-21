@@ -14,8 +14,8 @@
     "footer";
 }
 
-@media (max-width: 500px) {
-  .Contenedor {
-    width: 100%;
+@media (max-width: 667px) {
+  .contenedor {
+    width: 100% !important;
   }
 }

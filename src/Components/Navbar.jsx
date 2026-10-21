@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "./../assets/css/Navbar.css";
 
 import { useTotalContext } from "../context/Total.Context";
 import { Link, useNavigate } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 function Navbar(props) {
   let navegar = useNavigate();
   // contexto
-  const { totalReal } = useTotalContext();
+  const { total } = useContext(CartContext);
 
   // Variable reactiva
-  const [total, setTotal] = useState(0);
   const [token, setToken] = useState(false);
 
   // Handlers
@@ -36,7 +36,7 @@ function Navbar(props) {
           <p className="p-1">Pizzeria Mamma Mia</p>
           {token == true ? (
             <>
-              <Link to="/hito-1-react" clase="nav">
+              <Link to="/hito-1-react/" clase="nav">
                 Home <i className="fa-solid fa-house"></i>
               </Link>
               <Link to="/hito-1-react/profile" clase="nav">
@@ -63,7 +63,7 @@ function Navbar(props) {
 
         <div className="div-total">
           <Link to="/hito-1-react/cart" className="p-2">
-            Total: <span>${(total + totalReal).toLocaleString()} </span>
+            Total: <span>${total.toLocaleString()} </span>
             <i className="fa-solid fa-cart-shopping"></i>
           </Link>
         </div>
