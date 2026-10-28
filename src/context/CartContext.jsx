@@ -1,9 +1,8 @@
-import { createContext, useState } from "react";
-
-const pizza = { nombre: "pizza 1" };
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
+//
 export function CartContextProvider({ children }) {
   //
   const [listaPizza, setListaPizza] = useState([]);

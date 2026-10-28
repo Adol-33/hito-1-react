@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import { TotalContextProvider } from "./context/Total.Context";
-
 import Home from "./Components/Home";
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
@@ -14,12 +12,13 @@ import Pizza from "./pages/Pizza";
 import Profile from "./pages/Profile";
 import Error from "./pages/Error";
 import { CartContextProvider } from "./context/CartContext";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   return (
     <div className="contenedor">
       <CartContextProvider>
-        <TotalContextProvider>
+        <UserProvider>
           <Navbar />
           <Routes>
             <Route path="/hito-1-react/" element={<Home />} />
@@ -32,7 +31,7 @@ function App() {
             <Route path="*" element={<Error />} />
           </Routes>
           <Footer />
-        </TotalContextProvider>
+        </UserProvider>
       </CartContextProvider>
     </div>
   );

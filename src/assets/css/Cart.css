@@ -34,6 +34,7 @@
       justify-content: flex-start;
       align-items: center;
       gap: 10px;
+      cursor: pointer;
 
       p {
         width: 30%;
@@ -43,6 +44,10 @@
       span {
         font-weight: bold;
       }
+    }
+
+    li:hover {
+      background-color: rgb(247, 246, 246);
     }
   }
   .div-total {

@@ -1,40 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 import "./../assets/css/Navbar.css";
 
-import { useTotalContext } from "../context/Total.Context";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 function Navbar(props) {
-  let navegar = useNavigate();
   // contexto
   const { total } = useContext(CartContext);
-
-  // Variable reactiva
-  const [token, setToken] = useState(false);
-
-  // Handlers
-  const handleLogin = () => {
-    navegar("/hito-1-react/login");
-  };
-  const handleLogout = () => {
-    setToken(false);
-  };
-  const handleRegister = () => {
-    console.log(`Btn Register`);
-    navegar("/hito-1-react/register");
-  };
-  const handleHome = () => {
-    navegar("/hito-1-react/");
-  };
+  const { token, logout } = useContext(UserContext);
 
   return (
     <div className="navbar">
       <menu className="menu-nav">
         <div className="div-p1">
           <p className="p-1">Pizzeria Mamma Mia</p>
-          {token == true ? (
+          {token ? (
             <>
               <Link to="/hito-1-react/" clase="nav">
                 Home <i className="fa-solid fa-house"></i>
@@ -42,7 +24,7 @@ function Navbar(props) {
               <Link to="/hito-1-react/profile" clase="nav">
                 Profile <i className="fa-solid fa-user-gear"></i>
               </Link>
-              <Link to="/hito-1-react/logout" clase="nav">
+              <Link to="/hito-1-react/" clase="nav" onClick={logout}>
                 Logout <i className="fa-solid fa-right-from-bracket"></i>
               </Link>
             </>

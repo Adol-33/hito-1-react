@@ -1,27 +1,34 @@
-import React, { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./../assets/css/Profile.css";
 import Boton from "../Components/Boton";
+import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
-  const [usuario, setUsuario] = useState({
-    email: "email@prueba.com",
-    password: "",
-  });
+  // navegar
+  const navegar = useNavigate();
+  // Contexto Usuario
+  const { token, email, logout } = useContext(UserContext);
 
-  const handleEmail = (e) => {
-    setUsuario(e.target.value);
-  };
+  useEffect(() => {
+    if (!token) {
+      navegar("/hito-1-react/login");
+    }
+  }, []);
+
   return (
     <div className="div-profile">
-      <form>
-        <input
-          type="email"
-          placeholder="test@test.com"
-          value={usuario.email}
-          onChange={handleEmail}
-        />
-        <Boton texto="logout" />
-      </form>
+      {email ? (
+        <div>
+          <h2>
+            <b>Email: </b>
+          </h2>
+          <h1>{email}</h1>
+          <Boton onClick={logout} texto="logout" />
+        </div>
+      ) : (
+        <p>No Email</p>
+      )}
     </div>
   );
 }

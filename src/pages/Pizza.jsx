@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import CardPizza from "../Components/CardPizza";
 import PizzaComponent from "../Components/PizzaComponent";
+import { useParams } from "react-router-dom";
 
 function Pizza() {
   const [pizza, setPizza] = useState({});
   const [cargando, setCargando] = useState(true);
   const [apiOff, setApiOff] = useState(false);
 
+  const pizzaID = useParams();
+
   useEffect(() => {
     const ObtenerPizza = async () => {
       try {
-        const respuesta = await fetch("http://localhost:5000/api/pizzas/p001");
+        const respuesta = await fetch(
+          `http://localhost:5000/api/pizzas/${pizzaID.id}`,
+        );
 
         if (!respuesta.ok) {
           throw new Error(

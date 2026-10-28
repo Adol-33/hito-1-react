@@ -57,3 +57,11 @@
   outline: none;
   padding: 10px 15px;
 }
+
+.disable {
+  background-color: #ccc; /* Color apagado */
+  color: #666; /* Texto gris */
+  cursor: not-allowed; /* Cursor prohibido */
+  pointer-events: none; /* Bloquea clics */
+  opacity: 0.6;
+}

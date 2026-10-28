@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./../assets/css/login.css";
+import { UserContext } from "../context/UserContext";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  // Navegar
+  const navegar = useNavigate();
   // Variable reactiva
-  const [user, setUser] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
 
-  // Handler
+  // Context
+  const { token, setEmail, setToken } = useContext(UserContext);
+
   // Email
   const handlerEmail = (e) => {
     e.preventDefault();
@@ -21,15 +30,45 @@ function Login() {
   };
 
   // Submit
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (user.email == "prueba@prueba.com" && user.password == "123456") {
-      alert("Authentication successfull ✅");
-      setUser({ email: "", password: "" });
-    } else {
-      alert("Error Authentication ❌");
+
+    try {
+      const respuesta = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      // si error
+      if (!respuesta.ok) throw new Error("Error", respuesta.error);
+      // recibo
+      const data = await respuesta.json();
+      // localstorage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("email", data.email);
+      // Seteo token
+      setToken(data.token);
+      setEmail(data.email);
+      // Navego al Home
+      navegar("/hito-1-react/");
+      // Catch
+    } catch (error) {
+      console.log("error", error);
     }
   };
+
+  if (token) {
+    return (
+      <div>
+        <h1>Ya iniciaste sesion</h1>
+        <Link to="/hito-1-react/">Home</Link>
+        <br />
+        <Link to="/hito-1-react/profile">Perfil</Link>
+      </div>
+    );
+  }
   // Renderizado
   return (
     // Variable reactiva
@@ -41,7 +80,7 @@ function Login() {
         <i className="fa-regular fa-user"></i>
       </div>
 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={(e) => onSubmit(e)}>
         <input
           value={user.email}
           onChange={handlerEmail}
