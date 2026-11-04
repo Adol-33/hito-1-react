@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 //
 import "./../assets/css/Cart.css";
 //
@@ -6,13 +6,15 @@ import Boton from "./Boton";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+//
+import { EnviarCarrito } from "../hooks/carrito";
 
 //
 function Cart() {
   // Navegar
   const navegar = useNavigate();
   // Context
-  const { listaPizza, AgregarPizza, RestarPizza, total } =
+  const { listaPizza, AgregarPizza, RestarPizza, total, carrito } =
     useContext(CartContext);
   const { token } = useContext(UserContext);
 
@@ -46,7 +48,11 @@ function Cart() {
       <div className="div-total">
         <h2>total: ${total.toLocaleString()}</h2>
         {token && listaPizza.length > 0 ? (
-          <Boton texto="Pagar" clase="black" />
+          <Boton
+            onClick={() => EnviarCarrito(carrito)}
+            texto="Pagar"
+            clase="black"
+          />
         ) : (
           <Boton texto="Pagar" clase="black disable" />
         )}

@@ -14,7 +14,7 @@ function Profile() {
     if (!token) {
       navegar("/hito-1-react/login");
     }
-  }, []);
+  }, [email]);
 
   return (
     <div className="div-profile">

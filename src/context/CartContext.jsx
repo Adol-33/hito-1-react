@@ -7,8 +7,14 @@ export function CartContextProvider({ children }) {
   //
   const [listaPizza, setListaPizza] = useState([]);
   const [total, setTotal] = useState(0);
+  const [carrito, setCarrito] = useState({ pizzas: listaPizza, total: 0 });
+
+  useEffect(() => {
+    setCarrito({ ...carrito, pizzas: listaPizza, total: total });
+  }, [listaPizza, total]);
 
   const AgregarPizza = (item) => {
+    // true o false
     const itemExiste = listaPizza.findIndex((i) => {
       if (i?.id == item.id) {
         i.cantidad++;
@@ -35,10 +41,11 @@ export function CartContextProvider({ children }) {
       setListaPizza(listaPizza.filter((i) => i.id !== item.id));
     }
   };
+
   //
   return (
     <CartContext.Provider
-      value={{ listaPizza, total, AgregarPizza, RestarPizza }}
+      value={{ listaPizza, total, carrito, AgregarPizza, RestarPizza }}
     >
       {children}
     </CartContext.Provider>

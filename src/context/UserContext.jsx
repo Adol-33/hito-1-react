@@ -9,6 +9,9 @@ export function UserProvider({ children }) {
   //
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [email, setEmail] = useState(localStorage.getItem("email"));
+  const [isRegister, setIsRegister] = useState(
+    localStorage.getItem("registrado"),
+  );
 
   function logout() {
     localStorage.clear();
@@ -17,7 +20,17 @@ export function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{ token, email, setEmail, setToken, logout }}>
+    <UserContext.Provider
+      value={{
+        token,
+        email,
+        setEmail,
+        setToken,
+        logout,
+        isRegister,
+        setIsRegister,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

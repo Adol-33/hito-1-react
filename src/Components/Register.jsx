@@ -1,45 +1,62 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./../assets/css/Register.css";
 import { useNavigate } from "react-router-dom";
+// context
+import { UserContext } from "../context/UserContext";
+// registro
+import { Registrar } from "./../hooks/Registro";
 
 function Register() {
+  // Navigate
+  const navegar = useNavigate();
   // Variable reactiva
   const [datos, setDatos] = useState({
     email: "",
     password: "",
     passwordDos: "",
   });
+  // registro
+  const [isRegistrado, setIsRegistrado] = useState(
+    localStorage.getItem("registrado"),
+  );
+
+  useEffect(() => {
+    if (isRegistrado) navegar("/hito-1-react/profile");
+  }, []);
+
+  // context
+  const { setEmail, setToken, setYaRegistrado } = useContext(UserContext);
 
   // Email
-  const handlerEmail = (e) => {
-    e.preventDefault();
+  const handleEmail = (e) => {
     const email = e.target.value;
     setDatos({ ...datos, email });
   };
 
   // Password
-  const handlerPassword = (e) => {
-    e.preventDefault();
-    const password = Number(e.target.value);
+  const handlePassword = (e) => {
+    const password = e.target.value;
     setDatos({ ...datos, password });
   };
 
   // Password 2
-  const handlerPasswordConfirm = (e) => {
-    e.preventDefault();
-    const passConfirm = Number(e.target.value);
+  const handlePasswordConfirm = (e) => {
+    const passConfirm = e.target.value;
     setDatos({ ...datos, passwordDos: passConfirm });
   };
 
-  // Navigate
-  const navegar = useNavigate();
-
   // Submit
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (datos.password == datos.passwordDos) {
-      alert("Registro correcto ✅");
+      const res = await Registrar(datos.email, datos.password);
+      if (res.email) {
+        setEmail(datos.email);
+        setToken(res.token);
+        setIsRegistrado(true);
+        navegar("/hito-1-react/");
+      }
       setDatos({ email: "", password: "", passwordDos: "" });
     } else {
       alert("Error al registrarte ❌");
@@ -55,7 +72,7 @@ function Register() {
         </label>
         <input
           value={datos.email}
-          onChange={handlerEmail}
+          onChange={handleEmail}
           type="email"
           name="email"
           id="email"
@@ -69,7 +86,7 @@ function Register() {
         </label>
         <input
           value={datos.password}
-          onChange={handlerPassword}
+          onChange={handlePassword}
           type="password"
           name="password"
           id="password"
@@ -83,7 +100,7 @@ function Register() {
         </label>
         <input
           value={datos.passwordDos}
-          onChange={handlerPasswordConfirm}
+          onChange={handlePasswordConfirm}
           type="password"
           name="password2"
           id="password2"
